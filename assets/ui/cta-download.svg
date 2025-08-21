@@ -1,8 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="44" viewBox="0 0 160 44">
-  <rect x="0.5" y="0.5" width="159" height="43" rx="10" ry="10"
-        fill="none" stroke="#999" stroke-dasharray="6,6"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="14" fill="#999">
-    CTA: Download
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="229" height="18" viewBox="0 0 229 18">
+  <text id="DOWNLOAD_YOUR_CREATION" data-name="DOWNLOAD YOUR CREATION" transform="translate(0 15)" fill="#262522" font-size="20" font-family="AccessMN-Medium, Access MN" font-weight="500" text-decoration="underline"><tspan x="0" y="0">DOWNLOAD YOUR CREATION</tspan></text>
 </svg>
