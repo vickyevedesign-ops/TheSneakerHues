@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
-  <g id="fillable">
-    <rect x="100" y="250" width="900" height="150" rx="30" fill="#e6e6e6"/>
-    <circle cx="250" cy="450" r="60" fill="#e6e6e6"/>
-    <circle cx="900" cy="450" r="60" fill="#e6e6e6"/>
-  </g>
-  <path d="M100 250 H1000 M100 400 H1000 M250 450 L900 450" fill="none" stroke="#000" stroke-width="2"/>
-</svg>
