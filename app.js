@@ -1,4 +1,4 @@
-/* Sneaker Hues — app.js */
+/* Sneaker Hues â€” app.js (vanilla-colorful + #fillable + full PNG export) */
 const state = {
   activeColor: "#000000",
   slideIndex: 0,
@@ -33,7 +33,7 @@ function normalizeHex(hex){
   return "#000000";
 }
 
-/* Load and inline SVGs */
+/* Load and inline SVGs so we can interact with their nodes */
 async function loadSlides(){
   const slides = $$(".slide");
   for(const slide of slides){
@@ -44,6 +44,7 @@ async function loadSlides(){
     const svg = div.querySelector("svg");
     svg.removeAttribute("width"); svg.removeAttribute("height");
     svg.style.maxWidth = "100%";
+    // target fillable nodes ONLY
     const fillableRoot = svg.querySelector("#fillable");
     const targets = fillableRoot ? fillableRoot.querySelectorAll("*") : [];
     targets.forEach(el => {
@@ -99,7 +100,7 @@ function activateSlide(i){
 function next(){ activateSlide(state.slideIndex+1); }
 function prev(){ activateSlide(state.slideIndex-1); }
 
-/* Restart fills */
+/* Restart: clear fills on current slide, within #fillable only */
 function resetCurrent(){
   const svg = state.svgs[state.slideIndex];
   if(!svg) return;
@@ -113,7 +114,7 @@ function resetCurrent(){
   });
 }
 
-/* Get intrinsic size */
+/* Compute intrinsic size from viewBox or bbox */
 function getSvgSize(svg){
   const vb = svg.viewBox && svg.viewBox.baseVal;
   if(vb && (vb.width > 0 && vb.height > 0)){
@@ -123,7 +124,7 @@ function getSvgSize(svg){
   return { width: bbox.width, height: bbox.height, x: bbox.x, y: bbox.y };
 }
 
-/* Download sneaker as PNG */
+/* Download: export full SVG to PNG using intrinsic viewBox/bbox */
 async function downloadCurrent(){
   const svg = state.svgs[state.slideIndex];
   if(!svg) return;
@@ -160,3 +161,57 @@ function triggerDownload(blob, filename){
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    URL.revokeObjectURL(a.href);
+    a.remove();
+  }, 0);
+}
+
+async function openEyeDropper(){
+  if("EyeDropper" in window){
+    try{
+      const result = await new EyeDropper().open();
+      const picker = $("#picker");
+      picker.color = result.sRGBHex;
+    }catch(e){}
+  }else{
+    alert("Your browser does not support the EyeDropper API. Try Chrome, Edge, or Opera.");
+  }
+}
+
+function initOverlayTools(){
+  const img = $("#xdOverlay");
+  $("#overlayFile").addEventListener("change", (e)=>{
+    const file = e.target.files?.[0];
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    img.src = url; img.style.display = "block";
+  });
+  $("#overlayOpacity").addEventListener("input",(e)=>{
+    img.style.opacity = (e.target.value/100).toString();
+  });
+  $("#toggleOverlay").addEventListener("click", ()=>{
+    img.style.display = img.style.display === "none" ? "block" : "none";
+  });
+}
+
+function initEvents(){
+  $("#eyedropperBtn").addEventListener("click", openEyeDropper);
+  $("#resetBtn").addEventListener("click", resetCurrent);
+  $("#downloadBtn").addEventListener("click", downloadCurrent);
+  $("#nextBtn").addEventListener("click", next);
+  $("#prevBtn").addEventListener("click", prev);
+  window.addEventListener("keydown", (e)=>{
+    if(e.key === "ArrowRight") next();
+    if(e.key === "ArrowLeft") prev();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+  initPicker();
+  initEvents();
+  initOverlayTools();
+  await loadSlides();
+});
