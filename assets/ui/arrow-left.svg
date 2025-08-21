@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
-  <rect x="0.5" y="0.5" width="43" height="43" rx="10" ry="10"
-        fill="none" stroke="#999" stroke-dasharray="6,6"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="14" fill="#999">
-    ←
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="23.48" height="17.863" viewBox="0 0 23.48 17.863">
+  <g id="Group_9" data-name="Group 9" transform="translate(-167.02 -971.883)">
+    <line id="Line_1" data-name="Line 1" x1="20" transform="translate(169.5 979.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_262" data-name="Path 262" d="M174.5,2160.343l-7.479-9.7v-.287l7.479-5.08" transform="translate(1 -1172)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+  </g>
 </svg>
