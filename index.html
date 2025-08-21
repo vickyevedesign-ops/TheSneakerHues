@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sneaker Hues — Color Your Kicks</title>
+  <meta name="description" content="Color customizable sneaker SVGs. Eyedropper, restart, and download your creation." />
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<script type="module">
+  import "https://unpkg.com/vanilla-colorful@0.7.2/hex-color-picker.js";
+  import "https://unpkg.com/vanilla-colorful@0.7.2/hex-input.js";
+</script>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-dot" aria-hidden="true"></div>
+        <span class="brand-name">Sneaker Hues</span>
+      </div>
+      <div class="header-cta">
+        <button id="eyedropperBtn" class="btn ghost" aria-label="Pick a color"><img src="assets/ui/cta-eyedropper.svg" alt="Eyedropper"/></button>
+        <button id="resetBtn" class="btn ghost" aria-label="Reset current sneaker"><img src="assets/ui/cta-reset.svg" alt="Restart"/></button>
+        <button id="downloadBtn" class="btn primary" aria-label="Download your creation"><img src="assets/ui/cta-download.svg" alt="Download"/></button>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <aside class="palette" aria-label="Color palette">
+        <div class="palette-header">
+          <img src="assets/ui/headline.svg" alt="Headline"/>
+        </div>
+
+        <div class="colorful-wrap">
+          <hex-color-picker id="picker"></hex-color-picker>
+          <hex-input id="hexInput"></hex-input>
+        </div>
+
+        <img class="subcopy" src="assets/ui/subcopy.svg" alt="Subcopy"/>
+
+        <details class="overlay-tools">
+          <summary>XD Overlay (dev)</summary>
+          <p>Drop a PNG/JPG export of your XD artboard to align pixel-perfectly.</p>
+          <input type="file" id="overlayFile" accept="image/png,image/jpeg" />
+          <label class="slider-label">Opacity <input type="range" id="overlayOpacity" min="0" max="100" value="40"></label>
+          <button id="toggleOverlay" class="btn tiny ghost">Toggle Overlay</button>
+        </details>
+      </aside>
+
+      <section class="stage-wrap">
+        <div class="carousel">
+          <button class="nav prev" id="prevBtn" aria-label="Previous sneaker"><img src="assets/ui/arrow-left.svg" alt="Prev"/></button>
+          <div class="viewport" id="viewport" aria-live="polite">
+            <div class="slide" data-name="Sneaker 1"><div class="sneaker-stage" data-src="assets/sneakers/sneaker1.svg"></div></div>
+            <div class="slide" data-name="Sneaker 2"><div class="sneaker-stage" data-src="assets/sneakers/sneaker2.svg"></div></div>
+            <div class="slide" data-name="Sneaker 3"><div class="sneaker-stage" data-src="assets/sneakers/sneaker3.svg"></div></div>
+          </div>
+          <button class="nav next" id="nextBtn" aria-label="Next sneaker"><img src="assets/ui/arrow-right.svg" alt="Next"/></button>
+        </div>
+
+        <div class="sneaker-name">
+          <img id="sneakerName1" src="assets/ui/sneaker-name-1.svg" alt="Sneaker 1 name" />
+          <img id="sneakerName2" src="assets/ui/sneaker-name-2.svg" alt="Sneaker 2 name" style="display:none;"/>
+          <img id="sneakerName3" src="assets/ui/sneaker-name-3.svg" alt="Sneaker 3 name" style="display:none;"/>
+        </div>
+
+        <div class="dots" id="dots" role="tablist" aria-label="Sneaker selector"></div>
+
+        <img id="xdOverlay" class="xd-overlay" alt="" aria-hidden="true"/>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Pro tip: Click any fillable panel to apply the active color. Use Restart to clear fills.</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
