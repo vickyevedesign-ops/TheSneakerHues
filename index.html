@@ -19,7 +19,11 @@
         <div class="logo-dot" aria-hidden="true"></div>
         <span class="brand-name">Sneaker Hues</span>
       </div>
-      <!-- 👋 Header CTAs removed -->
+      <div class="header-cta">
+        <button id="eyedropperBtn" class="btn ghost" aria-label="Pick a color"><img src="assets/ui/cta-eyedropper.svg" alt="Eyedropper"/></button>
+        <button id="resetBtn" class="btn ghost" aria-label="Reset current sneaker"><img src="assets/ui/cta-reset.svg" alt="Restart"/></button>
+        <button id="downloadBtn" class="btn primary" aria-label="Download your creation"><img src="assets/ui/cta-download.svg" alt="Download"/></button>
+      </div>
     </header>
 
     <main class="main-grid">
@@ -33,22 +37,11 @@
           <hex-input id="hexInput"></hex-input>
         </div>
 
-        <!-- ✅ Single CTA block -->
-        <div class="cta-block">
-          <div class="cta-row">
-            <button id="eyedropperBtn" class="btn ghost" aria-label="Pick a color">
-              <img src="assets/ui/cta-eyedropper.svg" alt="Eyedropper"/>
-            </button>
-            <button id="resetBtn" class="btn ghost" aria-label="Reset current sneaker">
-              <img src="assets/ui/cta-reset.svg" alt="Restart"/>
-            </button>
-          </div>
-          <div class="cta-row single">
-            <button id="downloadBtn" class="btn primary" aria-label="Download your creation">
-              <img src="assets/ui/cta-download.svg" alt="Download"/>
-            </button>
-          </div>
-        </div>
+          <div class="header-cta">
+        <button id="eyedropperBtn" class="btn ghost" aria-label="Pick a color"><img src="assets/ui/cta-eyedropper.svg" alt="Eyedropper"/></button>
+        <button id="resetBtn" class="btn ghost" aria-label="Reset current sneaker"><img src="assets/ui/cta-reset.svg" alt="Restart"/></button>
+        <button id="downloadBtn" class="btn primary" aria-label="Download your creation"><img src="assets/ui/cta-download.svg" alt="Download"/></button>
+      </div>
 
         <img class="subcopy" src="assets/ui/subcopy.svg" alt="Subcopy"/>
 
@@ -92,4 +85,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
